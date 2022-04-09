@@ -130,13 +130,15 @@ const deepGet = (obj, prop) => {
       }
     }
     dfs(obj,0,)
-    res = isArray(res,name,nums)
-    dfs(res,nums)
+    if(res instanceof Array) {
+      res = isArray(res,name,nums)
+      dfs(res,nums)
+    }
+   
     return  res instanceof Object ? undefined : res;
 }
 // 判断是否返回的值是否是数组类型
 function isArray (res,name,nums) {
-  if(res instanceof Array) {
     for(let i = nums - 1; i < name.length; i++) {
         for(let j = 0; j < name[nums-1].length; j++) {
           if(parseInt(name[i][j]) == Number(name[i][j])) {
@@ -144,7 +146,6 @@ function isArray (res,name,nums) {
           }
         }
     }
-  }
   return res
 }
 
